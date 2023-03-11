@@ -1,7 +1,7 @@
 import requests
+from utils import localhost
 
 
-localhost = 'http://localhost:5000/'
 data = {
     'name': 'Lucas Lopes',
     'birthdate': '1995-07-12',

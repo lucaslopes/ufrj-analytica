@@ -3,6 +3,9 @@ from dateutil.relativedelta import relativedelta
 from flask import Flask, Blueprint
 
 
+localhost = 'http://localhost:5000/'
+
+
 def str2date(
         date: str,
     ) -> datetime.date:
