@@ -4,7 +4,17 @@ from flask import Blueprint, jsonify, request
 
 
 album_bp = Blueprint('album-info', __name__)
-
+artist_id_by_name = {
+    'Coldplay': 111239,
+    'Miley Cyrus': 113672,
+    'The Weeknd': 112024,
+    'Lady Gaga': 111236,
+    'Rihanna': 111305,
+    'Justin Bieber': 111626,
+    'Imagine Dragons': 114415,
+    'Drake': 111718,
+    'Beyoncé': 114364,
+    'Madonna': 111255}
 
 def get_artist_id_and_name(
         artist: str = 'coldplay'
