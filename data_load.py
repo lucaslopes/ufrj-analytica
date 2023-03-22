@@ -1,6 +1,7 @@
 import pandas as pd
 from pathlib import Path
 from basedosdados import read_table
+from utils import get_table_path
 
 
 def save_table_parquet(
@@ -8,7 +9,7 @@ def save_table_parquet(
         table_id: str,
         billing_project_id: str = 'partos'
     ) -> str | None:
-    savepath = f'{Path.home()}/Databases/basedosdados/{dataset_id}/{table_id}.parquet'
+    savepath = get_table_path(dataset_id, table_id)
     if Path(savepath).exists():
         return savepath
     else:
