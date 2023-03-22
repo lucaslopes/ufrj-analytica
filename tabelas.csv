@@ -1,5 +1,6 @@
 dataset_id,table_id
 br_bd_diretorios_brasil,municipio
+br_geobr_mapas,municipio
 br_geobr_mapas,saude
 br_geobr_mapas,regiao_imediata
 br_geobr_mapas,regiao_intermediaria
