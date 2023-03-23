@@ -10,13 +10,12 @@ url = localhost + 'album-info' + '?artist='
 
 def test_album_info(artist=None):
     if artist == None:
-        artist = 'coldplay'
+        artist = 'Coldplay'
     req = requests.get(url + artist)
     res = req.json()
-    print(req)
     if (code := req.status_code) == 200:
         print(code, res)
-    correct = {'album-tracks': {'1': 'Higher Power (acoustic version)'}, 'album-year': '2021', 'artist': 'Coldplay', 'artist-id': '111239', 'latest-album': 'Higher Power (acoustic version)', 'latest-album-id': '2386593'}
+    correct = {'album-tracks': {'1': 'Higher Power (acoustic version)'}, 'album-year': '2021', 'artist': 'Coldplay', 'artist-id': 111239, 'latest-album': 'Higher Power (acoustic version)', 'latest-album-id': '2386593'}
     assert res == correct
 
 
