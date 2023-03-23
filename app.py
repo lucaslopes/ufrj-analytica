@@ -9,6 +9,8 @@ st.title(config.TITLE)
 
 st.subheader(config.SUBTITLE)
 
+st.write(config.DESCRIPTION)
+
 type_parto = st.sidebar.multiselect(
     'Tipos de Parto',
     config.TYPES_PARTO,

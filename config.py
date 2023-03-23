@@ -6,6 +6,8 @@ TITLE = 'Deslocamento de Gestantes entre Municípios no Brasil'
 
 SUBTITLE = 'Análise do Acesso ao Parto Hospitalar pelo SUS na Década de 2010'
 
+DESCRIPTION = 'Percentual de uma localidade é calculado por uma divisão, onde o numerador é a quantidade de procedimentos que realizaram o parto hospitalar em um município diferente ao de uma residência nessa localidade. E o denominador é a quantidade de procedimentos realizados que possuem residência nessa localidade.'
+
 SIH_PATH = f'data/partos.parquet'
 
 TYPES_PARTO = [
