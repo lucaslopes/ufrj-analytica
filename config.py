@@ -1,11 +1,25 @@
+from pathlib import Path
+
+PROJECT_ID = 'partos'
 
 TITLE = 'Deslocamento de Gestantes entre Municípios no Brasil'
 
 SUBTITLE = 'Análise do Acesso ao Parto Hospitalar pelo SUS na Década de 2010'
 
-TYPES_PARTO = ['NOR', 'CES', 'NAR', 'CAR', 'NCT', 'CLT']
+SIH_PATH = f'data/partos.parquet'
 
-TIME_INTERVAL = ['ano', 'bienio', 'meia_decada']
+TYPES_PARTO = [
+    'NOR', # Parto Normal 
+    'CES', # Parto Cesariano 
+    'NAR', # Parto Normal de Alto Risco
+    'CAR', # Parto Cesariano de Alto Risco
+    'NCT', # Parto Normal em Centro de Parto Normal
+    'CLT'] # Parto Cesariano com Laqueadura Tubarina
+
+TIME_INTERVAL = [
+    'ano', # 2010, 2011, ..., 2018, 2019
+    'bienio', # 2010/11, 2010/11, ..., 2018/19 
+    'meia_decada'] # 2010-2014, 2015-2019
 
 COLS_MUN = [ # Municípios
     'id_municipio_6', 'nome',
@@ -26,3 +40,15 @@ GEO_RESOLUTIONS = [
     'mesorregiao',
     'uf',
     'regiao']
+
+TABLES_TO_DOWNLOAD = [
+    # (dataset_id, table_id),
+    ('br_bd_diretorios_brasil','municipio'),
+    ('br_geobr_mapas','municipio'),
+    ('br_geobr_mapas','saude'),
+    ('br_geobr_mapas','regiao_imediata'),
+    ('br_geobr_mapas','regiao_intermediaria'),
+    ('br_geobr_mapas','microrregiao'),
+    ('br_geobr_mapas','mesorregiao'),
+    ('br_geobr_mapas','uf'),
+    ('br_geobr_mapas','regiao')]

@@ -1,3 +1,4 @@
+import config
 import pandas as pd
 from pathlib import Path
 
@@ -5,9 +6,12 @@ from pathlib import Path
 def load_sih(
         pcdas: bool = True
     ):
-    sih_file = 'sih_pcdas' if pcdas else 'sih'
-    sih_path: str = f'{Path.home()}/Databases/partos/{sih_file}.parquet'
-    df_sih = pd.read_parquet(sih_path)
+    try:
+        df_sih = pd.read_parquet(config.SIH_PATH)
+    except FileNotFoundError:
+        sih_file = 'sih_pcdas' if pcdas else 'sih'
+        sih_path: str = f'{Path.home()}/Databases/partos/{sih_file}.parquet'
+        df_sih = pd.read_parquet(sih_path)
     return df_sih
 
 
@@ -66,7 +70,9 @@ def main():
     df_all = group_all_cases(df_ref)
     df_desl = only_desl(df_ref)
     df_merge = merge_cases(df_all, df_desl)
-    output_path = f'{Path.home()}/Databases/ufrj-analytica/partos.parquet'
+    output_path = config.SIH_PATH # f'{Path.home()}/Databases/ufrj-analytica/partos.parquet'
+    if not Path(output_path).exists():
+        Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     df_merge.to_parquet(output_path, index=False)
 
 

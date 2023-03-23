@@ -1,6 +1,9 @@
 import streamlit as st
 import config
-from data_load import load_mun_and_partos, generate_figure
+from data_load import (
+    save_list_tables,
+    load_mun_and_partos,
+    generate_figure)
 
 st.title(config.TITLE)
 
@@ -20,6 +23,8 @@ time_step = st.sidebar.selectbox(
     'Intervalo de Tempo',
     config.TIME_INTERVAL,
     index=len(config.TIME_INTERVAL) - 1)
+
+save_list_tables(config.TABLES_TO_DOWNLOAD)
 
 df_mun, df_partos = load_mun_and_partos()
 
