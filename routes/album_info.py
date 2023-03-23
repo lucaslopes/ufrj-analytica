@@ -61,8 +61,11 @@ def get_tracks_by_album_id(
     return tracks
 
 
-def get_artist_last_album(artist):
-    artist_id, artist_name = get_artist_id_and_name(artist)
+def get_artist_last_album(artist, artist_id=None):
+    if artist_id:
+        artist_name = artist
+    else:
+        artist_id, artist_name = get_artist_id_and_name(artist)
     discography = get_discography_by_artist(artist)
     latest_album = discography[0]['strAlbum']
     albums = get_albums_by_artist_id(artist_id)
@@ -87,8 +90,9 @@ def album_info():
     artist = request.args.get('artist')
     if not artist:
         return jsonify({'error': 'Missing artist parameter'}), 400
-    try: 
-        data = get_artist_last_album(artist)
+    try:
+        artist_id = artist_id_by_name[artist]
+        data = get_artist_last_album(artist, artist_id)
     except JSONDecodeError:
         return jsonify({'error': 'Error in finding discography of this artist'}), 400
     return jsonify(data), 200
