@@ -13,7 +13,7 @@
 $ `git clone -b api https://github.com/lucaslopes/ufrj-analytica.git `
 
 2. Enter in the project directory:
-$ `cd cd ufrj-analytica`
+$ `cd ufrj-analytica`
 
 3. Create a virtual environment for the project:
 $ `python3 -m venv env`
